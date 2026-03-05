@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JPM | Legal Housing Instrument</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --jpm-black: #000000;
+            --jpm-gold: #AD936E;
+            --jpm-cream: #F9F7F2;
+            --text-grey: #444;
+            --border-light: #DDD;
+        }
+
+        body { background: #0a0a0a; font-family: 'Inter', sans-serif; margin: 0; padding: 60px 0; color: var(--jpm-black); }
+        .doc-scroll-wrap { max-width: 950px; margin: 0 auto; background: white; padding: 100px 80px; box-shadow: 0 0 60px rgba(0,0,0,0.8); position: relative; }
+        
+        /* --- DUAL LOGO HEADER --- */
+        .header-container { display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid var(--jpm-black); padding-bottom: 30px; margin-bottom: 50px; }
+        .logo-jpm { width: 220px; filter: brightness(0); }
+        .logo-mmt { width: 160px; }
+        .doc-id-box { text-align: center; font-size: 9px; letter-spacing: 1px; color: #888; text-transform: uppercase; border-left: 1px solid #eee; border-right: 1px solid #eee; padding: 0 20px; }
+
+        /* --- TYPOGRAPHY --- */
+        h1 { font-family: 'Playfair Display', serif; font-size: 32px; margin-bottom: 10px; }
+        h3 { font-size: 12px; text-transform: uppercase; letter-spacing: 3px; color: var(--jpm-gold); margin-top: 50px; border-bottom: 1px solid var(--jpm-gold); padding-bottom: 5px; }
+        p, li { font-size: 14px; line-height: 1.9; color: var(--text-grey); margin-bottom: 15px; }
+        .legal-bold { font-weight: 700; color: #000; }
+
+        /* --- FORM FIELDS --- */
+        .data-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 30px 0; }
+        .input-group { display: flex; flex-direction: column; }
+        .input-group label { font-size: 10px; font-weight: 700; text-transform: uppercase; margin-bottom: 8px; color: #666; }
+        .input-group input { padding: 12px; border: 1px solid var(--border-light); background: #fafafa; font-size: 14px; outline: none; transition: 0.3s; }
+        .input-group input:focus { border-color: var(--jpm-gold); background: #fff; }
+        .full-width { grid-column: span 2; }
+
+        /* --- INTERACTIVE ELEMENTS --- */
+        .buffering-inline { display: none; font-size: 11px; color: var(--jpm-gold); font-weight: 700; margin-left: 10px; font-style: italic; }
+        .clause-item { display: flex; align-items: flex-start; padding: 20px; background: #fdfdfd; border: 1px solid #eee; margin-bottom: 15px; cursor: pointer; transition: 0.2s; }
+        .clause-item:hover { background: #f9f9f9; }
+        .clause-item input { margin-top: 5px; width: 18px; height: 18px; cursor: pointer; }
+
+        /* --- EXECUTION PANEL --- */
+        .execution-panel { margin-top: 80px; padding: 60px; border: 1px solid var(--jpm-gold); background: var(--jpm-cream); text-align: center; }
+        .otp-msg { display: none; color: #2e7d32; font-size: 12px; font-weight: 700; margin: 15px 0; }
+        .main-btn { background: var(--jpm-black); color: white; padding: 20px 50px; border: none; font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; transition: 0.4s; }
+        .main-btn:hover { background: var(--jpm-gold); }
+        .main-btn:disabled { background: #ccc; opacity: 0.5; cursor: not-allowed; }
+
+        /* --- OVERLAYS --- */
+        #loading-overlay { 
+            position: fixed; inset: 0; background: rgba(255,255,255,0.98); 
+            z-index: 10000; display: none; flex-direction: column; justify-content: center; align-items: center; text-align: center;
+        }
+        .spinner { width: 50px; height: 50px; border: 5px solid #eee; border-top: 5px solid var(--jpm-gold); border-radius: 50%; animation: spin 1s linear infinite; margin-bottom: 20px; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        #final-screen { display: none; padding: 100px; text-align: center; background: white; max-width: 950px; margin: 0 auto; }
+    </style>
+</head>
+<body>
+
+<div id="loading-overlay">
+    <div class="spinner"></div>
+    <h2 id="loading-text" style="font-weight: 300; letter-spacing: 2px; color: #000;">PROCESSING...</h2>
+    <p id="loading-subtext" style="color: #666; max-width: 500px; margin-top: 15px; font-size: 14px; line-height: 1.6;"></p>
+</div>
+
+<div class="doc-scroll-wrap" id="main-doc">
+    <div class="header-container">
+        <img src="https://i0.wp.com/rooftopleadership.com/wp-content/uploads/2023/04/JP-Morgan-Chase-Logo-e1681390058665.png?fit=3840%2C1267&ssl=1" class="logo-jpm" alt="J.P. Morgan Logo">
+        <div class="doc-id-box">
+            REF: JPM-MMT-2026-BH889<br>
+            TEHSILDAR REGION: BORIVALI<br>
+            STAMP DUTY: CORP-EXEMPT
+        </div>
+        <img src="https://povfilms.co.in/assets/img/logolist/3.png" class="logo-mmt" alt="MakeMyTrip Logo">
+    </div>
+
+    <h1>License Agreement for Executive Housing</h1>
+    <p>This License Agreement is made at Mumbai on this <span class="legal-bold">5th Day of March, 2026</span>, by and between <span class="legal-bold">J.P. Morgan Chase & Co.</span> (The Licensor) and the Employee mentioned below (The Licensee) in association with <span class="legal-bold">MakeMyTrip Concierge Services</span>.</p>
+
+    <h3>1. Licensee Personal Records</h3>
+    <div class="data-grid">
+        <div class="input-group"><label>Full Legal Name</label><input type="text" value="Sanvi Aryan" readonly></div>
+        <div class="input-group"><label>Employee ID</label><input type="text" value="JPM-VAULT-2026-X" readonly></div>
+        <div class="input-group"><label>Father's Name</label><input type="text" placeholder="Enter Full Name"></div>
+        <div class="input-group"><label>Mother's Name</label><input type="text" placeholder="Enter Full Name"></div>
+        <div class="input-group"><label>Aadhar Card Number</label><input type="text" placeholder="XXXX XXXX XXXX"></div>
+        <div class="input-group"><label>PAN Card Number</label><input type="text" placeholder="ABCDE1234F"></div>
+        <div class="input-group"><label>Alternate Contact</label><input type="text" placeholder="+91 00000 00000"></div>
+        <div class="input-group full-width"><label>Permanent Residential Address</label><input type="text" placeholder="House No, Street, City, State, Pincode"></div>
+    </div>
+
+    <h3>2. Witness Particulars</h3>
+    <div class="data-grid">
+        <div class="input-group"><label>Witness Name</label><input type="text" placeholder="Legal Name of Witness"></div>
+        <div class="input-group"><label>Age</label><input type="number" placeholder="Years"></div>
+        <div class="input-group full-width"><label>Witness Aadhar Number</label><input type="text" placeholder="XXXX XXXX XXXX"></div>
+    </div>
+
+    <h3>3. Property & Tenure</h3>
+    <p>RESIDENTIAL LICENSE AGREEMENT
+THIS AGREEMENT is made and executed at Mumbai on this 5th day of March, 2026,
+BETWEEN
+J.P. MORGAN CHASE & CO., a company incorporated under the laws of Delaware, having its principal India operations hub at LBS Marg, Mumbai, hereinafter referred to as the "LICENSOR" (which expression shall, unless it be repugnant to the context or meaning thereof, be deemed to mean and include its successors and assigns).
+AND
+MS. SANVI ARYAN, an employee of the Licensor (Employee ID: JPM-882190-X), currently residing at [Permanent Address to be inserted], hereinafter referred to as the "LICENSEE" (which expression shall, unless it be repugnant to the context or meaning thereof, be deemed to mean and include her heirs, executors, and administrators).
+1. GRANT OF LICENSE
+The Licensor is the absolute owner/lawful possessor of the premises situated at Executive Suite 402, Powai Heights, Mumbai - 400076 (hereinafter referred to as the "Licensed Premises"). At the request of the Licensee, the Licensor hereby grants a temporary license to use and occupy the Licensed Premises for residential purposes only.
+2. TENURE
+This Agreement shall be valid for a fixed period of 36 months (3 Years), commencing from March 15, 2026, and expiring on March 14, 2029, unless terminated earlier in accordance with the clauses herein.
+3. CONSIDERATION (EMPLOYEE BENEFIT)
+As the Licensee is a full-time employee of the Licensor, and this accommodation is provided under the JPM Global Mobility & Lifestyle Program, the license is granted FREE OF COST. No monthly rent or license fee shall be payable by the Licensee to the Licensor.
+4. UTILITIES AND MAINTENANCE
+The Licensor shall bear the costs of society maintenance charges and property taxes. The Licensee shall be responsible for the responsible consumption of electricity, water, and internet services, the costs of which are fully subsidized by the Firm’s Corporate Affairs Department under the Executive Housing Policy.
+5. LICENSEE’S COVENANTS
+The Licensee hereby agrees:
+To use the premises strictly for residential purposes for herself and her immediate family only.
+Not to sublet, assign, or part with the possession of the Licensed Premises to any third party under any circumstances.
+To maintain the interior of the premises in good and habitable condition, barring normal wear and tear.
+Not to make any structural alterations or permanent additions to the Licensed Premises without prior written consent from the Licensor.
+To allow the Licensor’s authorized representatives to enter and inspect the premises at reasonable hours with 24-hour prior notice.
+6. TERMINATION
+This Agreement shall stand automatically terminated upon the occurrence of any of the following:
+The expiry of the 36-month tenure.
+The Licensee ceasing to be an employee of J.P. Morgan Chase & Co. for any reason (resignation, retirement, or termination).
+A breach of any terms and conditions of this Agreement or the Firm’s Code of Conduct.
+The Licensee shall vacate the premises within 15 days of such termination.
+7. WITNESS AND PERSONAL DATA
+This agreement incorporates the personal data provided by the Licensee, including Aadhar and PAN details of the Licensee and the designated Witness, as registered in the JPM Executive Portal.
+8. JURISDICTION
+This Agreement shall be governed by the laws of India. Any disputes arising out of this Agreement shall be subject to the exclusive jurisdiction of the courts in Mumbai (Maha Tehsildar Borivali Jurisdiction).</p>
+
+    <h3>4. Mandatory Declarations</h3>
+    
+    <div class="clause-item" onclick="toggleClause(1)">
+        <input type="checkbox" id="c1" onclick="event.stopPropagation();">
+        <div style="margin-left: 15px;">
+            <span class="legal-bold">Clause 4.1: Legal Occupancy</span><br>
+            <span style="font-size: 12px;">I confirm that the property mentioned in my portal is the sole residence I will occupy.</span>
+            <span class="buffering-inline" id="b1">Verifying...</span>
+        </div>
+    </div>
+
+    <div class="clause-item" onclick="toggleClause(2)">
+        <input type="checkbox" id="c2" onclick="event.stopPropagation();">
+        <div style="margin-left: 15px;">
+            <span class="legal-bold">Clause 4.2: Compliance</span><br>
+            <span style="font-size: 12px;">I agree to comply with the Department of Registration & Stamps regulations.</span>
+            <span class="buffering-inline" id="b2">Syncing...</span>
+        </div>
+    </div>
+
+    <div class="clause-item" onclick="toggleClause(3)">
+        <input type="checkbox" id="c3" onclick="event.stopPropagation();">
+        <div style="margin-left: 15px;">
+            <span class="legal-bold">Clause 4.3: Termination Consent</span><br>
+            <span style="font-size: 12px;">I accept the 3-year term and the 'Free of Cost' nature of this agreement.</span>
+            <span class="buffering-inline" id="b3">Validating...</span>
+        </div>
+    </div>
+
+    <div class="execution-panel">
+        <h2 style="font-size: 14px; margin-bottom: 20px; letter-spacing: 1px;">E-SIGNATURE AUTHORIZATION</h2>
+        <input type="text" id="otp-field" placeholder="ENTER 6-DIGIT OTP" style="padding: 15px; width: 250px; text-align: center; letter-spacing: 5px; border: 1px solid var(--jpm-gold); margin-bottom: 20px; display: none;">
+        <br>
+        <button class="main-btn" id="gen-btn" onclick="generateOtp()">Generate OTP</button>
+        <p id="otp-notif" class="otp-msg">OTP Generated on registered number ending with 0275</p>
+        <br>
+        <button class="main-btn" id="sub-btn" onclick="finalSubmit()" disabled>Submit Legal Agreement</button>
+    </div>
+</div>
+
+<div id="final-screen">
+    <div style="color: #2e7d32; font-size: 80px; margin-bottom: 20px;">✓</div>
+    <h1 style="font-family: 'Inter', sans-serif; font-weight: 300;">Submission Successful</h1>
+    <p style="color: #444; font-size: 18px; margin-top: 20px; line-height: 1.6;">The signed e-agreement will be sent to your <br><strong>registered e-mail address</strong> and <strong>registered number</strong> shortly.</p>
+    <div style="margin-top: 50px; border-top: 1px solid #eee; padding-top: 20px;">
+        <p style="font-size: 11px; color: #999;">GOVERNMENT FILING ID: BT-77291-2026-MUM</p>
+        <p style="font-size: 11px; color: #999;">TIMESTAMP: MARCH 05, 2026 | 21:28 IST</p>
+    </div>
+</div>
+
+<script>
+    function toggleClause(id) {
+        const check = document.getElementById('c' + id);
+        const buffer = document.getElementById('b' + id);
+        
+        if(buffer.style.display === 'inline') return;
+
+        check.checked = !check.checked;
+        buffer.style.display = 'inline';
+        
+        setTimeout(() => {
+            buffer.style.display = 'none';
+            checkEnableSubmit();
+        }, 1500);
+    }
+
+    function checkEnableSubmit() {
+        const c1 = document.getElementById('c1').checked;
+        const c2 = document.getElementById('c2').checked;
+        const c3 = document.getElementById('c3').checked;
+        document.getElementById('sub-btn').disabled = !(c1 && c2 && c3);
+    }
+
+    function generateOtp() {
+        const overlay = document.getElementById('loading-overlay');
+        const text = document.getElementById('loading-text');
+        const subtext = document.getElementById('loading-subtext');
+        
+        overlay.style.display = 'flex';
+        text.innerText = "GENERATING SECURE TOKEN...";
+        subtext.innerText = "Connecting With Maharashtra Stamp Registration Department";
+
+        setTimeout(() => {
+            overlay.style.display = 'none';
+            document.getElementById('otp-notif').style.display = 'block';
+            document.getElementById('otp-field').style.display = 'inline-block';
+            document.getElementById('gen-btn').innerText = "Resend OTP";
+        }, 10000); // 10 seconds buffering
+    }
+
+    function finalSubmit() {
+        const overlay = document.getElementById('loading-overlay');
+        const text = document.getElementById('loading-text');
+        const subtext = document.getElementById('loading-subtext');
+        
+        overlay.style.display = 'flex';
+        text.innerText = "OFFICIAL SUBMISSION IN PROGRESS";
+        subtext.innerHTML = "Please wait while your agreement is submitted to <br><strong>Maha Tehsildar Borivali & Department Of Registration & Stamps</strong>";
+
+        setTimeout(() => {
+            document.getElementById('main-doc').style.display = 'none';
+            overlay.style.display = 'none';
+            document.getElementById('final-screen').style.display = 'block';
+        }, 60000); // 1 minute buffering
+    }
+</script>
+
+</body>
+</html>
